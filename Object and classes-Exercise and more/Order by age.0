@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
+
+namespace ConsoleApp1
+{
+
+   class Program
+    {
+        static void Main(string[] args)
+        {
+            List<People> people = new List<People>();
+            int counter = 0;
+            while (true)
+            {
+                string[] elements = Console.ReadLine().Split().ToArray();
+                counter++;
+                if (elements[0] == "End")
+                {
+                    break;
+                }
+                string name = elements[0];
+                string number = elements[1];
+                int age = int.Parse(elements[2]);
+
+                People peoples = new People()
+                {
+                    Name = name,
+                    Number = number,
+                    Age = age
+
+                };
+                people.Add(peoples);
+            }
+            var result= people.OrderBy(peoples => peoples.Age).ToList();
+
+            foreach (var item in result)
+                {
+                    
+                    Console.WriteLine($"{item.Name} with ID: {item.Number} is {item.Age} years old.");
+                }
+
+            }
+
+
+        }
+    }
+
+    public class People
+    {
+        public string Name { get; set; }
+        public string Number { get; set; }
+        public int Age { get; set; }
+}
+    
+
+
+
+                
+            
+        
+    
+
+
+
+        
+    
+
+

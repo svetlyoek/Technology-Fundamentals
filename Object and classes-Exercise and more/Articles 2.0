@@ -1,0 +1,76 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
+
+namespace ConsoleApp1
+{
+
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            int counter = int.Parse(Console.ReadLine());
+            var Article = new List<Article>();
+
+            for (int i = 1; i <= counter; i++)
+            {
+                string[] articles = Console.ReadLine().Split(", ").ToArray();
+
+                Article article = new Article();
+                {
+                    article.Title = articles[0];
+                    article.Content = articles[1];
+                    article.Author = articles[2];
+
+                }
+                Article.Add(article);
+            }
+
+            string input = Console.ReadLine();
+            if (input == "title")
+            {
+                Article = Article.OrderBy(x => x.Title).ToList();
+            }
+            else if (input == "content")
+            {
+                Article = Article.OrderBy(x => x.Content).ToList();
+            }
+            else if (input == "author")
+            {
+                Article = Article.OrderBy(x => x.Author).ToList();
+            }
+            Console.WriteLine(string.Join(Environment.NewLine, Article));
+        }
+
+    }
+
+}
+class Article
+{
+    public string Title { get; set; }
+    public string Content { get; set; }
+    public string Author { get; set; }
+
+
+    public override string ToString()
+    {
+        return $"{Title} - {Content}: {Author}";
+    }
+        }
+    
+
+
+
+                
+            
+        
+    
+
+
+
+        
+    
+
+

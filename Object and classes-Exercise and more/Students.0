@@ -1,0 +1,63 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
+
+namespace ConsoleApp1
+{
+
+   public class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Students> students = new List<Students>();
+            int counter = int.Parse(Console.ReadLine());
+            for (int i = 1; i <= counter; i++)
+            {
+                List<string> text = Console.ReadLine().Split().ToList();
+                string firstName = text[0];
+                string secondName = text[1];
+                double grade = double.Parse(text[2]);
+                Students student = new Students();
+                {
+                    student.FirstName = firstName;
+                  student.LastName = secondName;
+                    student.Grade = grade;
+                };
+
+                students.Add(student);
+            }
+            var printList= students.OrderByDescending(x => x.Grade);
+           
+            foreach (var student in printList)
+            {
+                Console.WriteLine($"{student.FirstName} {student.LastName}: {(student.Grade):f2}");
+            }
+
+
+
+        }
+    }
+    public class Students
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public double Grade { get; set; }
+}
+}
+    
+
+
+
+                
+            
+        
+    
+
+
+
+        
+    
+
+
